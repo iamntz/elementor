@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, yehudah
 Tags: page builder, editor, builder, visual editor, front-end editor, design, drag and drop builder, front-end builder, landing page, page builder plugin, site builder, template builder, visual builder, website builder, wysiwyg
 Requires at least: 4.4
 Tested up to: 4.5
-Stable tag: 0.4.1
+Stable tag: 0.6.4
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -74,8 +74,11 @@ We've integrated RTL and multi language support within the framework of Elemento
 - [Portuguese (Portugal)](https://translate.wordpress.org/locale/pt-br/default/wp-plugins/elementor) - (pt_PT)
 - [Portuguese (Brazil)](https://translate.wordpress.org/locale/pt-br/default/wp-plugins/elementor) - (pt_BR)
 - [Polish](https://translate.wordpress.org/locale/pl/default/wp-plugins/elementor) - (pl_PL)
+- [Persian](https://translate.wordpress.org/locale/fa/default/wp-plugins/elementor) - (fa_IR)
 - [Hebrew](https://translate.wordpress.org/locale/he/default/wp-plugins/elementor) - (he_IL)
+- [Spanish (Spain)](https://translate.wordpress.org/locale/es/default/wp-plugins/elementor) - (es_ES) - in progress
 - [French](https://translate.wordpress.org/locale/fr/default/wp-plugins/elementor) - (fr_FR) - in progress
+- [Italian](https://translate.wordpress.org/locale/it/default/wp-plugins/elementor) - (it_IT) - in progress
 
 = Be a contributor =
 If you want to contribute, go to our [Elementor GitHub Repository](https://github.com/pojome/elementor) and see where you can help.
@@ -84,9 +87,9 @@ You can also add a new language via [translate.wordpress.org](https://translate.
 
 = Documentation and Support =
 
-- For documentation and tutorials go to [docs.elementor.com](https://docs.elementor.com/).
+- For documentation and tutorials go to [docs.elementor.com](https://docs.elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 - If you have any more questions, visit our support on the [Plugin's Forum](https://wordpress.org/support/plugin/elementor).
-- For more information about features, FAQs and documentation, check out [Elementor.com](https://elementor.com/).
+- For more information about features, FAQs and documentation, check out [Elementor.com](https://elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 = Liked Elementor? =
 - Check out our recently featured page on [Product Hunt](https://www.producthunt.com/tech/elementor).
@@ -105,6 +108,8 @@ You can also add a new language via [translate.wordpress.org](https://translate.
 * PHP version 5.6 or greater
 * MySQL version 5.6 or greater
 
+https://www.youtube.com/watch?v=Ypn6fltn_7s
+
 = Installation =
 
 1. Install using the WordPress built-in Plugin installer, or Extract the zip file and drop the contents in the `wp-content/plugins/` directory of your WordPress installation.
@@ -112,6 +117,8 @@ You can also add a new language via [translate.wordpress.org](https://translate.
 3. Go to Pages > Add New
 4. Press the 'Edit with Elementor' button.
 5. Now you can drag and drop widgets from the left panel onto the content area, as well as add new sections and columns that make up the page structure.
+
+For documentation and tutorials go to [docs.elementor.com](https://docs.elementor.com/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme).
 
 == Frequently Asked Questions ==
 
@@ -147,6 +154,80 @@ No. Elementor supports WordPress 4.4 or greater, and is compatible with PHP 5.4 
 4. Settings page.
 
 == Changelog ==
+
+= 0.6.4 - 04.08.2016 =
+* Tweak! - Google Fonts list updated ([#371](https://github.com/pojome/elementor/pull/371))
+* Fixed! - Content overflow in "fit to screen" sections for mobile ([#369](https://github.com/pojome/elementor/issues/369))
+* Fixed! - Icon Box Widget: Better support for Safari browser
+* Fixed! - Text Editor Widget: Added listening to undo & redo events ([#340](https://github.com/pojome/elementor/issues/340))
+
+= 0.6.3 - 01.08.2016 =
+* Tweak! - Show element title in delete dialog ([#337](https://github.com/pojome/elementor/pull/337))
+* Tweak! - Added responsive support for Image Gallery widget ([topic](https://wordpress.org/support/topic/galery-not-responsive))
+* Tweak! - CSS files for entrance animation and hover animations combine to `animations.min.css` file
+* Fixed! - Columns resize cannot be repeated ([#349](https://github.com/pojome/elementor/issues/349))
+* Fixed! - Anchor Menu widget in Safari browser
+* Fixed! - Bug when global font set as a default ([topic](https://wordpress.org/support/topic/font-family-bug))
+
+= 0.6.2 - 27.07.2016 =
+* Tweak! - Improve the way using attachment details
+* Tweak! - Verifies the AJAX request to prevent processing requests external of the editor
+* Fixed! - Hover animation classes in Image widget
+* Fixed! - Icon spacing on mobile in Icon Box widget
+* Fixed! - Image spacing on mobile in Image Box widget
+
+= 0.6.1 - 26.07.2016 =
+* Tweak! - Improved editor UI for blank pages
+* Fixed! - Hide empty widgets in preview mode
+* Fixed! - Bug with Section background overlay and background video ([#323](https://github.com/pojome/elementor/issues/323))
+* Fixed! - Minor security issue
+
+= 0.6.0 - 25.07.2016 =
+* New! - Added 27 Hover Animations for Image / Icon / Button widgets
+* New! - Editor panel now is resizable
+* New! - Added smooth scrolling for anchors in Anchor Menu widget
+* Tweak! - Improved performance
+* Tweak! - Improved speed in live editing
+* Tweak! - Optimization for memory usage (30% less!)
+* Tweak! - Improved UI for preview editor
+* Tweak! - Add `contain` background image CSS option ([#297](https://github.com/pojome/elementor/pull/297))
+* Tweak! - Added compatibility for NextGen Gallery plugin ([#296](https://github.com/pojome/elementor/issues/296))
+* Tweak! - Print JS scripts in the footer
+* Tweak! - Set color picker control `alpha` for all widgets
+* Fixed! - Remove `maxlength` attribute from color picker input ([#298](https://github.com/pojome/elementor/issues/298))
+* Fixed! - Background video: Set object-fit only HTML5 player (solved Safari YouTube issue)
+* Fixed! - Bug with target blank link in Icon List widget
+* Fixed! - Bug with alignment in Icon List widget ([#283](https://github.com/pojome/elementor/issues/283))
+* Fixed! - Improved responsive in Tabs widget ([#279](https://github.com/pojome/elementor/issues/279))
+* Fixed! - RTL bug in Alert widget ([#287](https://github.com/pojome/elementor/issues/287))
+
+= 0.5.2 - 17.07.2016 =
+* New! - Added Animation Duration control for all elements
+* New! - Added Prevent Scroll control for Google Maps widget
+
+= 0.5.1 - 14.07.2016 =
+* Tweak! - Added details image sizes in Image Sizes control
+* Fixed! - Chrome bug with flex mode in Image Box widget 
+* Fixed! - Textarea control: set `label_block` to `true` by default
+* Fixed! - Textarea control style for Icon Box Widget
+* Fixed! - Removed translations from system-info for better understanding support 
+* Fixed! - Design fixes for Icon List widget
+
+= 0.5.0 - 13.07.2016 =
+* New! - Added more than 35 Entrance Animations to all elements
+* New! - Added Box Shadow control to all elements
+* Tweak! - Added option to disable colors palettes in the settings
+* Tweak! - Added option to disable fonts default in the settings
+* Tweak! - Added hidden title to alert & image box widgets
+* Tweak! - Added group posts widget from Pojo themes
+* Tweak! - Remove extra margin bottom on Textarea ([#182](https://github.com/pojome/elementor/issues/182))
+* Tweak! - Applying border-radius on background overlay ([#249](https://github.com/pojome/elementor/issues/249))
+* Tweak! - Fixed toggle widget RTL style
+* Tweak! - Updated Font Awesome v4.6.3
+* Tweak! - Changed Textarea control markup according to the general concept
+* Tweak! - Fixed modal RTL style
+* Fixed! - Fade effect in Image Carousel widget ([#245](https://github.com/pojome/elementor/issues/245), [#253](https://github.com/pojome/elementor/issues/253))
+* Fixed! - Don't print anything when no have link in Video widget
 
 = 0.4.1 - 05.07.2016 =
 * Tweak! - Default structure presets changed for new section

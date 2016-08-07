@@ -155,7 +155,10 @@ module.exports = function( grunt ) {
 			},
 			all: [
 				'Gruntfile.js',
-				'assets/admin/js/dev/**/*.js'
+				'assets/admin/js/dev/**/*.js',
+				'assets/js/dev/**/*.js',
+				'assets/js/admin.js',
+				'assets/js/frontend.js'
 			]
 		},
 
@@ -335,6 +338,7 @@ module.exports = function( grunt ) {
 					'!assets/admin/js/dev/**',
 					'!assets/js/dev/**',
 					'!assets/scss/**',
+					'!assets/**/*.map',
 					'!*~'
 				],
 				expand: true,

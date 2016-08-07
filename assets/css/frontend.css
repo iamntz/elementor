@@ -1,3 +1,4 @@
+@charset "UTF-8";
 .elementor-video-wrapper {
   position: relative;
   height: 0; }
@@ -57,7 +58,8 @@
     max-width: none;
     top: 50%;
     left: 50%;
-    transform: translateY(-50%) translateX(-50%);
+    transform: translateY(-50%) translateX(-50%); }
+  .elementor .elementor-html5-video {
     object-fit: cover; }
   .elementor .elementor-background-overlay {
     height: 100%;
@@ -65,6 +67,8 @@
     top: 0;
     left: 0;
     position: absolute; }
+  .elementor .elementor-invisible {
+    visibility: hidden; }
 
 #elementor-select-preset {
   display: none; }
@@ -77,11 +81,11 @@
     position: relative; }
     .elementor-section .elementor-container.elementor-container-fluid {
       max-width: 100%; }
-  .elementor-section.elementor-section-height-full {
-    height: 100vh; }
-    .elementor-section.elementor-section-height-full > .elementor-container {
-      height: 100%; }
   @media (min-width: 768px) {
+    .elementor-section.elementor-section-height-full {
+      height: 100vh; }
+      .elementor-section.elementor-section-height-full > .elementor-container {
+        height: 100%; }
     .elementor-section > .elementor-container {
       display: -ms-flexbox;
       display: flex; }
@@ -114,16 +118,7 @@
   width: 100%;
   display: -ms-flexbox;
   display: flex;
-  /* In dragging mode it's causing a columns fall */
-  /* Temp Removing = Wrap in Safari browser
-  &:before,
-  &:after {
-  	content: " ";
-  	display: table;
-  }
-  &:after {
-  	clear: both;
-  }*/ }
+  /* In dragging mode it's causing a columns fall */ }
   @media (max-width: 767px) {
     .elementor-row {
       -ms-flex-wrap: wrap;
@@ -138,7 +133,8 @@
 
 .elementor-widget-wrap {
   position: relative;
-  width: 100%; }
+  width: 100%;
+  z-index: 1; }
 
 .elementor-widget {
   position: relative; }
@@ -367,6 +363,42 @@
   .elementor-widget-image .elementor-image.elementor-image-shape-circle {
     border-radius: 50%; }
 
+.elementor-image-gallery .gallery .gallery-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto; }
+  .elementor-image-gallery .gallery .gallery-item img {
+    margin: 0 auto; }
+.elementor-image-gallery .gallery.gallery-columns-2 .gallery-item {
+  max-width: 50%; }
+.elementor-image-gallery .gallery.gallery-columns-3 .gallery-item {
+  max-width: 33.33%; }
+.elementor-image-gallery .gallery.gallery-columns-4 .gallery-item {
+  max-width: 25%; }
+.elementor-image-gallery .gallery.gallery-columns-5 .gallery-item {
+  max-width: 20%; }
+.elementor-image-gallery .gallery.gallery-columns-6 .gallery-item {
+  max-width: 16.66%; }
+.elementor-image-gallery .gallery.gallery-columns-7 .gallery-item {
+  max-width: 14.28%; }
+.elementor-image-gallery .gallery.gallery-columns-8 .gallery-item {
+  max-width: 12.5%; }
+.elementor-image-gallery .gallery.gallery-columns-9 .gallery-item {
+  max-width: 11.11%; }
+.elementor-image-gallery .gallery.gallery-columns-10 .gallery-item {
+  max-width: 10%; }
+.elementor-image-gallery .gallery .gallery-caption {
+  margin: 0; }
+
+@media (max-width: 767px) {
+  .elementor-image-gallery .gallery.gallery-columns-3 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-4 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-5 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-6 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-7 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-8 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-9 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-10 .gallery-item {
+    max-width: 50%; } }
+@media (max-width: 479px) {
+  .elementor-image-gallery .gallery.gallery-columns-2 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-3 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-4 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-5 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-6 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-7 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-8 .gallery-item, .elementor-image-gallery .gallery.gallery-columns-9 .gallery-item {
+    max-width: 100%; } }
 .elementor-button-wrapper.elementor-align-center {
   text-align: center; }
 .elementor-button-wrapper.elementor-align-right {
@@ -541,7 +573,7 @@
   .elementor-tabs .elementor-tabs-wrapper {
     overflow: hidden; }
     .elementor-tabs .elementor-tabs-wrapper .elementor-tab-title {
-      display: inline-block; }
+      display: table-cell; }
       .elementor-tabs .elementor-tabs-wrapper .elementor-tab-title > span {
         position: relative;
         display: block;
@@ -623,7 +655,7 @@
       display: inline-block;
       width: 1em; }
       .elementor-toggle .elementor-toggle-title .elementor-toggle-icon .fa:before {
-        content: '\f0da'; }
+        content: ""; }
     .elementor-toggle .elementor-toggle-title.active {
       border-bottom: none; }
       .elementor-toggle .elementor-toggle-title.active .elementor-toggle-icon .fa:before {
@@ -665,21 +697,22 @@
 .elementor-widget.elementor-shape-circle .elementor-icon {
   border-radius: 50%; }
 
-.elementor-widget-icon-list ul.elementor-icon-list-items {
+.elementor-widget-icon-list .elementor-icon-list-items {
   list-style-type: none;
   margin: 0;
   padding: 0; }
-  .elementor-widget-icon-list ul.elementor-icon-list-items li.elementor-icon-list-item {
-    margin: 0;
-    padding: 0; }
-    .elementor-widget-icon-list ul.elementor-icon-list-items li.elementor-icon-list-item a {
-      display: inline-block; }
-    .elementor-widget-icon-list ul.elementor-icon-list-items li.elementor-icon-list-item .elementor-icon-list-icon,
-    .elementor-widget-icon-list ul.elementor-icon-list-items li.elementor-icon-list-item .elementor-icon-list-text {
-      display: inline-block;
-      vertical-align: middle; }
-    .elementor-widget-icon-list ul.elementor-icon-list-items li.elementor-icon-list-item .elementor-icon-list-icon {
-      width: 1em; }
+.elementor-widget-icon-list .elementor-icon-list-item {
+  margin: 0;
+  padding: 0; }
+  .elementor-widget-icon-list .elementor-icon-list-item a {
+    display: inline; }
+.elementor-widget-icon-list .elementor-icon-list-icon,
+.elementor-widget-icon-list .elementor-icon-list-text {
+  display: inline;
+  vertical-align: middle; }
+.elementor-widget-icon-list .elementor-icon-list-icon {
+  width: 1em;
+  line-height: 1; }
 
 .elementor-widget-video.elementor-aspect-ratio-169 .elementor-video-wrapper {
   padding-bottom: 56.25%; }
@@ -716,8 +749,8 @@
 .elementor-image-carousel-wrapper .slick-image-stretch .slick-slide .slick-slide-image {
   width: 100%; }
 
-.elementor-widget-image-box .elementor-image-box-wrapper {
-  overflow: hidden; }
+.elementor-widget-image-box .elementor-image-box-content {
+  width: 100%; }
 @media (min-width: 768px) {
   .elementor-widget-image-box.elementor-position-left .elementor-image-box-wrapper, .elementor-widget-image-box.elementor-position-right .elementor-image-box-wrapper {
     display: -ms-flexbox;
@@ -747,18 +780,20 @@
 @media (max-width: 767px) {
   .elementor-widget-image-box .elementor-image-box-img {
     margin-left: auto !important;
-    margin-right: auto !important; } }
+    margin-right: auto !important;
+    margin-bottom: 15px; } }
 .elementor-widget-image-box .elementor-image-box-wrapper {
   text-align: center; }
 .elementor-widget-image-box .elementor-image-box-description {
   margin: 0; }
 
-.elementor-widget-icon-box .elementor-icon-box-wrapper {
-  overflow: hidden; }
 @media (min-width: 768px) {
   .elementor-widget-icon-box.elementor-position-left .elementor-icon-box-wrapper, .elementor-widget-icon-box.elementor-position-right .elementor-icon-box-wrapper {
     display: -ms-flexbox;
     display: flex; }
+  .elementor-widget-icon-box.elementor-position-left .elementor-icon-box-icon, .elementor-widget-icon-box.elementor-position-right .elementor-icon-box-icon {
+    -ms-flex: 0 0 auto;
+        flex: 0 0 auto; }
   .elementor-widget-icon-box.elementor-position-right .elementor-icon-box-wrapper {
     text-align: right;
     -ms-flex-direction: row-reverse;
@@ -784,7 +819,8 @@
 @media (max-width: 767px) {
   .elementor-widget-icon-box .elementor-icon-box-icon {
     margin-left: auto !important;
-    margin-right: auto !important; } }
+    margin-right: auto !important;
+    margin-bottom: 15px; } }
 .elementor-widget-icon-box .elementor-icon-box-wrapper {
   text-align: center; }
 .elementor-widget-icon-box .elementor-icon-box-description {
@@ -933,6 +969,9 @@
       width: 100%; }
       .elementor-person-wrapper .elementor-person-content .elementor-person-detailes .elementor-person-social-icons .elementor-person-social-icon {
         display: inline-block; }
+
+body.elementor-page .elementor-widget-menu-anchor {
+  margin-bottom: 0; }
 
 .slick-slider {
   position: relative;
@@ -1141,14 +1180,37 @@ ul.slick-dots {
 .slick-dots-inside.slick-dotted.slick-slider {
   margin-bottom: 0; }
 
+.animated {
+  animation-duration: 1.25s; }
+  .animated.animated-slow {
+    animation-duration: 2s; }
+  .animated.animated-fast {
+    animation-duration: .75s; }
+
+.animated.infinite {
+  animation-iteration-count: infinite; }
+
+/*
+.animated.hinge {
+	animation-duration: 2s;
+}
+
+
+.animated.flipOutX,
+.animated.flipOutY,
+.animated.bounceIn,
+.animated.bounceOut {
+	animation-duration: .75s;
+}
+*/
 @media (max-width: 767px) {
-  body:not(.elementor-editor-active) .elementor-hidden-phone, body:not(.elementor-editor-active) .elementor-visible-tablet, body:not(.elementor-editor-active) .elementor-visible-desktop {
+  body:not(.elementor-editor-active) .elementor-hidden-phone {
     display: none; } }
 @media (min-width: 480px) and (max-width: 1023px) {
-  body:not(.elementor-editor-active) .elementor-hidden-tablet, body:not(.elementor-editor-active) .elementor-visible-phone, body:not(.elementor-editor-active) .elementor-visible-desktop {
+  body:not(.elementor-editor-active) .elementor-hidden-tablet {
     display: none; } }
 @media (min-width: 1024px) {
-  body:not(.elementor-editor-active) .elementor-hidden-desktop, body:not(.elementor-editor-active) .elementor-visible-phone, body:not(.elementor-editor-active) .elementor-visible-tablet {
+  body:not(.elementor-editor-active) .elementor-hidden-desktop {
     display: none; } }
 body:not(.elementor-editor-active) .elementor-hidden {
   display: none; }
