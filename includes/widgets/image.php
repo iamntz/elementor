@@ -53,15 +53,15 @@ class Widget_Image extends Widget_Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 				],
 				'default' => 'center',
@@ -226,19 +226,19 @@ class Widget_Image extends Widget_Base {
 				'options' => [
 					'left' => [
 						'title' => __( 'Left', 'elementor' ),
-						'icon' => 'align-left',
+						'icon' => 'fa fa-align-left',
 					],
 					'center' => [
 						'title' => __( 'Center', 'elementor' ),
-						'icon' => 'align-center',
+						'icon' => 'fa fa-align-center',
 					],
 					'right' => [
 						'title' => __( 'Right', 'elementor' ),
-						'icon' => 'align-right',
+						'icon' => 'fa fa-align-right',
 					],
 					'justify' => [
 						'title' => __( 'Justified', 'elementor' ),
-						'icon' => 'align-justify',
+						'icon' => 'fa fa-align-justify',
 					],
 				],
 				'default' => '',
@@ -331,10 +331,10 @@ class Widget_Image extends Widget_Base {
 		?>
 		<# if ( '' !== settings.image.url ) {
 
-			elementor.imagesManager.registerItem( elementModel );
+			elementor.imagesManager.registerItem( editModel );
 
 			// Get url from imagesManager.
-			var image_url = elementor.imagesManager.getItem( elementModel );
+			var image_url = elementor.imagesManager.getItem( editModel );
 
 			// If it's not in cache, like a new dropped widget or a custom size - get from settings
 			if ( ! image_url ) {

@@ -611,7 +611,7 @@
 		}
 
 		&.wp-picker-active {
-			transform: translateY(-18px);
+			transform: translateY(6px);
 
 			.wp-color-result {
 				margin-right: 3px;
@@ -949,10 +949,13 @@
 		}
 	}
 
-	// Hidden control
-	.elementor-control-type-hidden {
-		display: none !important;
+	// Code Editor
+	.elementor-control-type-code {
+		padding: 0 10px 15px;
 	}
+
+	// Tabs Control
+	@import "controls/tabs";
 
 	// Repeater control
 	@import "controls/repeater";
@@ -968,4 +971,9 @@
 
 	// Order control
 	@import "controls/order";
+
+	// Hidden control
+	.elementor-control-type-hidden {
+		display: none !important;
+	}
 }
