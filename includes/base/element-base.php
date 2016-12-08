@@ -139,7 +139,7 @@ abstract class Element_Base {
 	}
 
 	public function remove_control( $id ) {
-		return Plugin::instance()->controls_manager->remove_control_from_stack( $this, $id );
+		return Plugin::instance()->controls_manager->remove_control_from_stack( $this->get_name(), $id );
 	}
 
 	public final function add_group_control( $group_name, $args = [] ) {
@@ -275,7 +275,7 @@ abstract class Element_Base {
 	}
 
 	public function get_icon() {
-		return 'columns';
+		return 'eicon-columns';
 	}
 
 	public function is_reload_preview_required() {
@@ -420,10 +420,10 @@ abstract class Element_Base {
 		return true;
 	}
 
-	public function add_render_attribute( $element, $key = null, $value = null ) {
+	public function add_render_attribute( $element, $key = null, $value = null, $overwrite = false ) {
 		if ( is_array( $element ) ) {
 			foreach ( $element as $element_key => $attributes ) {
-				$this->add_render_attribute( $element_key, $attributes );
+				$this->add_render_attribute( $element_key, $attributes, null, $overwrite );
 			}
 
 			return $this;
@@ -431,7 +431,7 @@ abstract class Element_Base {
 
 		if ( is_array( $key ) ) {
 			foreach ( $key as $attribute_key => $attributes ) {
-				$this->add_render_attribute( $element, $attribute_key, $attributes );
+				$this->add_render_attribute( $element, $attribute_key, $attributes, $overwrite );
 			}
 
 			return $this;
@@ -441,9 +441,19 @@ abstract class Element_Base {
 			$this->_render_attributes[ $element ][ $key ] = [];
 		}
 
-		$this->_render_attributes[ $element ][ $key ] = array_merge( $this->_render_attributes[ $element ][ $key ], (array) $value );
+		settype( $value, 'array' );
+
+		if ( $overwrite ) {
+			$this->_render_attributes[ $element ][ $key ] = $value;
+		} else {
+			$this->_render_attributes[ $element ][ $key ] = array_merge( $this->_render_attributes[ $element ][ $key ], $value );
+		}
 
 		return $this;
+	}
+
+	public function set_render_attribute( $element, $key = null, $value = null ) {
+		return $this->add_render_attribute( $element, $key, $value, true );
 	}
 
 	public function get_render_attribute_string( $element ) {

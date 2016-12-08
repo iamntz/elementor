@@ -2,8 +2,8 @@
 Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, yehudah, mati1000, pojosh
 Tags: page builder, editor, elementor, builder, visual editor, front-end editor, design, drag and drop builder, front-end builder, landing page, page builder plugin, site builder, template builder, visual builder, website builder, wysiwyg
 Requires at least: 4.4
-Tested up to: 4.6
-Stable tag: 0.11.2
+Tested up to: 4.7
+Stable tag: 1.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -158,6 +158,29 @@ No. Elementor supports WordPress 4.4 or greater, and is compatible with PHP 5.4 
 5. **Responsive Design.** Create custom settings for desktop, tablet & mobile by switching between devices.
 
 == Changelog ==
+
+= 1.0.1 - 08.12.2016 =
+* Fix! - Waypoint script for multiple versions ([#933](https://github.com/pojome/elementor/issues/933), [#1001](https://github.com/pojome/elementor/issues/1001))
+* Fix! - Text Editor widget compatible for WordPress 4.7
+* Fix! - Label form compatible for TwentySeventy theme
+
+= 1.0.0 - 06.12.2016 =
+* New! - Added code editor for HTML widget
+* New! - Added social icon for Houzz
+* New! - Added Code control base on ACE
+* New! - Added Tabs control for editor panel
+* New! - Forms style for future widgets
+* Tweak! - Update Waypoints library to v4.0.1
+* Tweak! - Added support for multiple icon fonts in Choose control
+* Fix! - Progress Bar "glitch" on page refresh ([#909](https://github.com/pojome/elementor/issues/909))
+* Fix! - post-css-file don't enqueue if isn't elementor post ([#902](https://github.com/pojome/elementor/issues/902))
+* Fix! - Columns widget not render on search ([#862](https://github.com/pojome/elementor/issues/862))
+* Fix! - Conflict with Bootstrap 3 Shortcodes plugin ([#924](https://github.com/pojome/elementor/issues/924))
+* Fix! - Don't generate or enqueue CSS file if post not built with elementor
+* Fix! - Icon button RTL bug in tools page
+* Fix! - Color Picker control bug on FireFox
+* Fix! - Video background for section works again
+* Fix! - Draggable line for columns widget
 
 = 0.11.2 - 21.11.2016 =
 * Fix! - Don't Generate CSS if it's not build with Elementor
