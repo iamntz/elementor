@@ -5,7 +5,7 @@
 **Tags:** page builder, editor, elementor, builder, visual editor, front-end editor, design, drag and drop builder, front-end builder, landing page, page builder plugin, site builder, template builder, visual builder, website builder, wysiwyg  
 **Requires at least:** 4.4  
 **Tested up to:** 4.7  
-**Stable tag:** 1.0.2  
+**Stable tag:** 1.0.3  
 **License:** GPLv3  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -160,6 +160,11 @@ No. Elementor supports WordPress 4.4 or greater, and is compatible with PHP 5.4 
 5. **Responsive Design.** Create custom settings for desktop, tablet & mobile by switching between devices.
 
 ## Changelog ##
+
+### 1.0.3 - 11.12.2016 ###
+* New! - Ready for Elementor Pro
+* Tweak! - Added template type validation
+* Fix! - Select2 control fix empty state
 
 ### 1.0.2 - 08.12.2016 ###
 * Fix! - Adjusting Text Editor widget when visual editor is disabled ([Topic](https://wordpress.org/support/topic/text-editing-menu-is-blank/))
