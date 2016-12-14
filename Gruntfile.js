@@ -204,18 +204,6 @@ module.exports = function( grunt ) {
 			]
 		},
 
-		sass: {
-			dist: {
-				files: [ {
-					expand: true,
-					cwd: 'assets/dev/scss/direction',
-					src: '*.scss',
-					dest: 'assets/css',
-					ext: '.css'
-				} ]
-			}
-		},
-
 		postcss: {
 			dev: {
 				options: {
