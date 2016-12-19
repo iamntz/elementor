@@ -3,7 +3,7 @@ Contributors: pojo.me, KingYes, ariel.k, jzaltzberg, yehudah, mati1000, pojosh
 Tags: page builder, editor, elementor, builder, visual editor, front-end editor, design, drag and drop builder, front-end builder, landing page, page builder plugin, site builder, template builder, visual builder, website builder, wysiwyg
 Requires at least: 4.4
 Tested up to: 4.7
-Stable tag: 1.0.4
+Stable tag: 1.0.5
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -160,6 +160,13 @@ No. Elementor supports WordPress 4.4 or greater, and is compatible with PHP 5.4 
 5. **Responsive Design.** Create custom settings for desktop, tablet & mobile by switching between devices.
 
 == Changelog ==
+
+= 1.0.5 - 18.12.2016 =
+* Tweak! - Added VH unit in min-height control for section
+* Fix! - Bug with section-content-position in Columns widget
+* Fix! - Bug with stretched section
+* Fix! - Avoid fatal error for invalid widgets
+* Deprecated! - Removed `#elementor` ID from frontend output
 
 = 1.0.4 - 12.12.2016 =
 * Tweak! - Added mobile editing options for social icons widget
