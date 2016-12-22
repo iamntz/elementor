@@ -5598,11 +5598,11 @@ BaseElementView = Marionette.CompositeView.extend( {
 		}
 
 		if ( ! _.isNumber( value ) && _.isEmpty( value ) ) {
-			return '';
+			return;
 		}
 
 		if ( ! elementor.helpers.isControlVisible( control, values ) ) {
-			return '';
+			return;
 		}
 
 		return value;
@@ -6277,6 +6277,19 @@ ControlBaseItemView = Marionette.CompositeView.extend( {
 		this.elementSettingsModel.set( this.model.get( 'name' ), value );
 
 		this.triggerMethod( 'settings:change' );
+
+		var elementType = this.elementSettingsModel.get( 'elType' );
+		if ( 'widget' === elementType ) {
+			elementType = this.elementSettingsModel.get( 'widgetType' );
+		}
+
+		if ( undefined === elementType ) {
+			return;
+		}
+
+		// Do not use with this action
+		// It's here for tests and maybe later will be publish
+		elementor.hooks.doAction( 'panel/editor/element/' + elementType + '/' + this.model.get( 'name' ) + '/changed' );
 	},
 
 	applySavedValue: function() {
