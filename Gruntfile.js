@@ -39,6 +39,7 @@ module.exports = function( grunt ) {
 				files: [ {
 					src: [
 						'**/*.php',
+						'!docs/**',
 						'!node_modules/**',
 						'!build/**',
 						'!tests/**',
@@ -347,6 +348,7 @@ module.exports = function( grunt ) {
 				src: [
 					'**',
 					'!node_modules/**',
+					'!docs/**',
 					'!build/**',
 					'!bin/**',
 					'!.git/**',
