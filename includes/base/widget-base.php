@@ -36,14 +36,12 @@ abstract class Widget_Base extends Element_Base {
 		return [];
 	}
 
+	public function get_categories() {
+		return [ 'basic' ];
+	}
+
 	public function __construct( $data = [], $args = null ) {
-		do_action( 'elementor/element/before_construct', $this, $data, $args );
-		do_action( 'elementor/element/before_construct/' . $this->get_name(), $this, $data, $args );
-
 		parent::__construct( $data, $args );
-
-		do_action( 'elementor/element/after_construct', $this );
-		do_action( 'elementor/element/after_construct/' . $this->get_name(), $this );
 
 		$is_type_instance = $this->is_type_instance();
 
@@ -52,9 +50,7 @@ abstract class Widget_Base extends Element_Base {
 		}
 
 		if ( $is_type_instance ) {
-			do_action( 'elementor/widget/' . $this->get_name() . '/before_register_skins', $this );
 			$this->_register_skins();
-			do_action( 'elementor/widget/' . $this->get_name() . '/after_register_skins', $this );
 		}
 	}
 
@@ -62,7 +58,7 @@ abstract class Widget_Base extends Element_Base {
 		return true;
 	}
 
-	public function start_controls_section( $section_id, $args ) {
+	public function start_controls_section( $section_id, array $args ) {
 		parent::start_controls_section( $section_id, $args );
 
 		static $is_first_section = true;
@@ -116,14 +112,13 @@ abstract class Widget_Base extends Element_Base {
 
 	protected function _register_skins() {}
 
-	public function get_config( $item = null ) {
-		$config = parent::get_config( $item );
+	protected function _get_initial_config() {
 
-		$config['widget_type'] = $this->get_name();
-
-		$config['keywords'] = $this->get_keywords();
-
-		return $config;
+		return array_merge( parent::_get_initial_config(), [
+			'widget_type' => $this->get_name(),
+			'keywords' => $this->get_keywords(),
+			'categories' => $this->get_categories(),
+		] );
 	}
 
 	public final function print_template() {
