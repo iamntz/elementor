@@ -355,7 +355,6 @@ class Widget_Image extends Widget_Base {
 			}
 
 			var wrapper_class_name = settings.shape ? ' elementor-image-shape-' + settings.shape : '';
-			wrapper_class_name += ' ' + <?php echo apply_filters( 'elementor/widgets/image/content_template/wrapper_class_name', '' ); ?>;
 			#><div class="elementor-image{{ wrapper_class_name }}"><#
 			var imgClass = '',
 				hasCaption = '' !== settings.caption;
