@@ -319,9 +319,7 @@ class Element_Section extends Element_Base {
 				'label' => __( 'Structure', 'elementor' ),
 				'type' => Controls_Manager::STRUCTURE,
 				'default' => '10',
-				'selectors' => [
-					'' => '',
-				], // Hack to define it as a styleControl. @FIXME
+				'render_type' => 'ui',
 			]
 		);
 
@@ -340,7 +338,7 @@ class Element_Section extends Element_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'background',
-				'types' => [ 'classic', 'video' ],
+				'types' => [ 'classic', 'gradient', 'video' ],
 			]
 		);
 
@@ -353,7 +351,7 @@ class Element_Section extends Element_Base {
 				'label' => __( 'Background Overlay', 'elementor' ),
 				'tab' => Controls_Manager::TAB_STYLE,
 				'condition' => [
-					'background_background' => [ 'classic', 'video' ],
+					'background_background' => [ 'classic', 'gradient', 'video' ],
 				],
 			]
 		);
@@ -362,9 +360,10 @@ class Element_Section extends Element_Base {
 			Group_Control_Background::get_type(),
 			[
 				'name' => 'background_overlay',
+				'types' => [ 'classic', 'gradient' ],
 				'selector' => '{{WRAPPER}} > .elementor-background-overlay',
 				'condition' => [
-					'background_background' => [ 'classic', 'video' ],
+					'background_background' => [ 'classic', 'gradient', 'video' ],
 				],
 			]
 		);
@@ -387,7 +386,7 @@ class Element_Section extends Element_Base {
 					'{{WRAPPER}} > .elementor-background-overlay' => 'opacity: {{SIZE}};',
 				],
 				'condition' => [
-					'background_overlay_background' => [ 'classic' ],
+					'background_overlay_background' => [ 'classic', 'gradient' ],
 				],
 			]
 		);
@@ -585,6 +584,17 @@ class Element_Section extends Element_Base {
 		);
 
 		$this->add_control(
+			'_element_id',
+			[
+				'label' => __( 'CSS ID', 'elementor' ),
+				'type' => Controls_Manager::TEXT,
+				'default' => '',
+				'label_block' => true,
+				'title' => __( 'Add your custom id WITHOUT the hashtag. e.g: my-id', 'elementor' ),
+			]
+		);
+
+		$this->add_control(
 			'css_classes',
 			[
 				'label' => __( 'CSS Classes', 'elementor' ),
@@ -711,7 +721,7 @@ class Element_Section extends Element_Base {
 			<# }
 		}
 
-		if ( 'classic' === settings.background_overlay_background ) { #>
+		if ( -1 !== [ 'classic', 'gradient' ].indexOf( settings.background_overlay_background ) ) { #>
 			<div class="elementor-background-overlay"></div>
 		<# } #>
 		<div class="elementor-container elementor-column-gap-{{ settings.gap }}" <# if ( settings.get_render_attribute_string ) { #>{{{ settings.get_render_attribute_string( 'wrapper' ) }}} <# } #> >
@@ -742,6 +752,10 @@ class Element_Section extends Element_Base {
 			$this->add_render_attribute( 'wrapper', 'class', $control['prefix_class'] . $settings[ $control['name'] ] );
 		}
 
+		if ( ! empty( $settings['_element_id'] ) ) {
+			$this->add_render_attribute( 'wrapper', 'id', trim( $settings['_element_id'] ) );
+		}
+
 		if ( ! empty( $settings['animation'] ) ) {
 			$this->add_render_attribute( 'wrapper', 'data-animation', $settings['animation'] );
 		}
@@ -764,7 +778,7 @@ class Element_Section extends Element_Base {
 				<?php endif;
 			endif;
 
-			if ( 'classic' === $settings['background_overlay_background'] ) : ?>
+			if ( in_array( $settings['background_overlay_background'], [ 'classic', 'gradient' ] ) ) : ?>
 				<div class="elementor-background-overlay"></div>
 			<?php endif; ?>
 			<div class="elementor-container elementor-column-gap-<?php echo esc_attr( $settings['gap'] ); ?>">

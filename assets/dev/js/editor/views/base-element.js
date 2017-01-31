@@ -288,7 +288,15 @@ BaseElementView = Marionette.CompositeView.extend( {
 		}
 
 		return value;
-	},
+	},/*
+
+	render: function() {
+		if ( this.model.isRemoteRequestActive() ) {
+			return;
+		}
+
+		Marionette.CompositeView.prototype.render.apply( this, arguments );
+	},*/
 
 	renderStyles: function() {
 		var self = this,
@@ -310,29 +318,51 @@ BaseElementView = Marionette.CompositeView.extend( {
 	},
 
 	renderCustomClasses: function() {
-		this.$el.addClass( 'elementor-element' );
+		var self = this;
 
-		var settings = this.getEditModel().get( 'settings' );
+		self.$el.addClass( 'elementor-element' );
 
-		_.each( settings.attributes, _.bind( function( value, attribute ) {
+		var settings = self.getEditModel().get( 'settings' );
+
+		_.each( settings.attributes, function( value, attribute ) {
 			if ( settings.isClassControl( attribute ) ) {
-				var currentControl = settings.getControl( attribute );
+				var currentControl = settings.getControl( attribute ),
+					previousClassValue = settings.previous( attribute ),
+					classValue = value;
 
-				this.$el.removeClass( currentControl.prefix_class + settings.previous( attribute ) );
+				if ( currentControl.classes_dictionary ) {
+					if ( undefined !== currentControl.classes_dictionary[ previousClassValue ] ) {
+						previousClassValue = currentControl.classes_dictionary[ previousClassValue ];
+					}
+
+					if ( undefined !== currentControl.classes_dictionary[ value ] ) {
+						classValue = currentControl.classes_dictionary[ value ];
+					}
+				}
+
+				self.$el.removeClass( currentControl.prefix_class + previousClassValue );
 
 				var isVisible = elementor.helpers.isControlVisible( currentControl, settings.attributes );
 
-				if ( isVisible && ! _.isEmpty( settings.get( attribute ) ) ) {
-					this.$el.addClass( currentControl.prefix_class + settings.get( attribute ) );
-					this.$el.addClass( _.result( this, 'className' ) );
+				if ( isVisible && ! _.isEmpty( classValue ) ) {
+					self.$el
+						.addClass( currentControl.prefix_class + classValue )
+						.addClass( _.result( self, 'className' ) );
 				}
 			}
-		}, this ) );
+		} );
+	},
+
+	renderCustomElementID: function() {
+		var customElementID = this.getEditModel().get( 'settings' ).get( '_element_id' );
+
+		this.$el.attr( 'id', customElementID );
 	},
 
 	renderUI: function() {
 		this.renderStyles();
 		this.renderCustomClasses();
+		this.renderCustomElementID();
 		this.enqueueFonts();
 	},
 
@@ -366,7 +396,7 @@ BaseElementView = Marionette.CompositeView.extend( {
 					return;
 				}
 
-				if ( control.force_render || ! settings.isStyleControl( settingKey ) && ! settings.isClassControl( settingKey ) ) {
+				if ( control.force_render || ! settings.isStyleControl( settingKey ) && ! settings.isClassControl( settingKey ) && '_element_id' !== settingKey ) {
 					isContentChanged = true;
 				}
 			} );
@@ -484,28 +514,47 @@ BaseElementView = Marionette.CompositeView.extend( {
 				return;
 			}
 
-			var devicePattern = /^\(([^)]+)\)/,
-				deviceRule = selector.match( devicePattern );
+			var devicePattern = /^(?:\([^)]+\)){1,2}/,
+				deviceRules = selector.match( devicePattern ),
+				query = {};
 
-			if ( deviceRule ) {
+			if ( deviceRules ) {
+				deviceRules = deviceRules[0];
+
 				selector = selector.replace( devicePattern, '' );
 
-				deviceRule = deviceRule[1];
+				var pureDevicePattern = /\(([^)]+)\)/g,
+					pureDeviceRules = [],
+					matches;
+
+				while ( matches = pureDevicePattern.exec( deviceRules ) ) {
+					pureDeviceRules.push( matches[1] );
+				}
+
+				_.each( pureDeviceRules, function( deviceRule ) {
+					if ( 'desktop' === deviceRule ) {
+						return;
+					}
+
+					var device = deviceRule.replace( /\+$/, '' ),
+						endPoint = device === deviceRule ? 'max' : 'min';
+
+					query[ endPoint ] = device;
+				} );
 			}
 
 			_.each( placeholders, function( placeholder, index ) {
-				selector = selector.replace( placeholder, replacements[ index ] );
+				var placeholderPattern = new RegExp( placeholder, 'g' );
+
+				selector = selector.replace( placeholderPattern, replacements[ index ] );
 			} );
 
-			var device = deviceRule,
-				query;
+			if ( ! Object.keys( query ).length && control.responsive ) {
+				query = elementor.helpers.cloneObject( control.responsive );
 
-			if ( ! device && control.responsive ) {
-				device = control.responsive;
-			}
-
-			if ( device && 'desktop' !== device ) {
-				query = { max: device };
+				if ( 'desktop' === query.max ) {
+					delete query.max;
+				}
 			}
 
 			stylesheet.addRules( selector, outputCssProperty, query );

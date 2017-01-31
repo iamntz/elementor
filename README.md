@@ -5,7 +5,7 @@
 **Tags:** page builder, editor, elementor, builder, visual editor, front-end editor, design, drag and drop builder, front-end builder, landing page, page builder plugin, site builder, template builder, visual builder, website builder, wysiwyg  
 **Requires at least:** 4.4  
 **Tested up to:** 4.7  
-**Stable tag:** 1.1.6  
+**Stable tag:** 1.1.7  
 **License:** GPLv3  
 **License URI:** https://www.gnu.org/licenses/gpl-3.0.html  
 
@@ -38,7 +38,8 @@ Elementor comes with an exclusive toolset, that lets you create truly a responsi
 Never lose your page designs again! Elementor includes a Revision History feature, which means every time you click on the save button, a new revision is saved. You can always trace your steps and switch back and forth between versions. All revisions are seen visually, so you can visually compare between versions and choose the best one!
 
 > <strong>Elementor Pro</strong><br />
-> We've made sure the free Elementor offers the best possible solution for designing WordPress. Elementor Pro is the next step, and extends the basic features even further. Features you won't get anywhere else: Live form design, posts and portfolio widgets, the faster slider ever, WooCommerce widgets, global templates, custom CSS and much more. [Click here to buy the ultimate page builder for WordPress!](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
+> We've made sure the free Elementor offers the best possible solution for designing WordPress. Elementor Pro is the next step, and extends the basic features even further.<br />
+> Features you won't get anywhere else: Live form design, posts and portfolio widgets, the faster slider ever, WooCommerce widgets, global templates, custom CSS and much more. [Click here to buy the ultimate page builder for WordPress!](https://elementor.com/pro/?utm_source=wp-repo&utm_medium=link&utm_campaign=readme)
 
 ### 28 widgets and counting ###
 We packed 28 of the most useful widgets into Elementor. True, that's way more than we had to offer, but we wanted to spare no widget from you, so you can reach the top of your design capabilities.
@@ -124,6 +125,7 @@ You can also add a new language via [translate.wordpress.org](https://translate.
 
 * PHP version 5.6 or greater
 * MySQL version 5.6 or greater
+* WP Memory limit of 64 MB or greater (128 MB or higher is preferred)
 
 https://www.youtube.com/watch?v=Ypn6fltn_7s
 
@@ -172,6 +174,15 @@ No. Elementor supports WordPress 4.4 or greater, and is compatible with PHP 5.4 
 5. **Responsive Design.** Create custom settings for desktop, tablet & mobile by switching between devices.
 
 ## Changelog ##
+
+### 1.1.7 - 25.01.2017 ###
+* Tweak! - Change `box-shadow` type control from select to switcher
+* Fix! - On-loading glitch for Image Carousel widget
+* Fix! - Background attachment for Section on mobile devices ([#890](https://github.com/pojome/elementor/issues/890))
+* Fix! - Default WordPress widget checkboxes not holding values ([#1210](https://github.com/pojome/elementor/issues/1210))
+* Fix! - Heading with link custom color gone ([#1216](https://github.com/pojome/elementor/issues/1216))
+* Fix! - Jumping of panel when the `wp-color-picker` is active
+* Deprecated! - `Plugin::get_version()` method removed
 
 ### 1.1.6 - 18.01.2017 ###
 * Fix! - Improving enqueue assets if elementor exists on the page
